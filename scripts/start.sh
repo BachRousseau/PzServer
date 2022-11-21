@@ -36,35 +36,19 @@ fi
 
 echo "---Update Server---"
 if [ "${STEAM_USER}" == "" ]; then
-    if [ "${VALIDATE}" == "true" ]; then
     	echo "---Validating installation---"
         ${STEAMCMD_DIR}/steamcmd.sh \
         +force_install_dir ${SERVER_DIR} \
         +login anonymous \
         +app_update ${GAME_ID} validate \
         +quit
-    else
-        ${STEAMCMD_DIR}/steamcmd.sh \
-        +force_install_dir ${SERVER_DIR} \
-        +login anonymous \
-        +app_update ${GAME_ID} \
-        +quit
-    fi
 else
-    if [ "${VALIDATE}" == "true" ]; then
     	echo "---Validating installation---"
         ${STEAMCMD_DIR}/steamcmd.sh \
         +force_install_dir ${SERVER_DIR} \
         +login ${STEAM_USER} ${PASSWRD} \
         +app_update ${GAME_ID} validate \
         +quit
-    else
-        ${STEAMCMD_DIR}/steamcmd.sh \
-        +force_install_dir ${SERVER_DIR} \
-        +login ${STEAM_USER} ${PASSWRD} \
-        +app_update ${GAME_ID} \
-        +quit
-    fi
 fi
 
 echo "---Prepare Server---"
