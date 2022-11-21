@@ -1,6 +1,6 @@
-FROM steamcmd/ubuntu-20
+FROM ubuntu:22.04
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash -c"]
 
 WORKDIR /data
 
