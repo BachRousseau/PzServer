@@ -13,9 +13,9 @@ EXPOSE 8766/udp 8767/udp 27015/tcp
 # Pz Ports
 EXPOSE ${PZ_PORT_2}/TCP ${PZ_PORT}/TCP  ${PZ_PORT_2}/UDP ${PZ_PORT}/UDP
 
-RUN mkdir /data/{scripts,steamcmd,pzserver}
+RUN mkdir scripts steamcmd pzserver
 
-ADD /scripts/start.sh /data/scripts
+COPY /scripts/start.sh /scripts
 
 
 
