@@ -7,18 +7,18 @@ if [ ! -f ${STEAMCMD_DIR}/steamcmd.sh ]; then
 fi
 
 echo "---Update SteamCMD---"
-if [ "${USERNAME}" == "" ]; then
+if [ "${STEAM_USER}" == "" ]; then
     ${STEAMCMD_DIR}/steamcmd.sh \
     +login anonymous \
     +quit
 else
     ${STEAMCMD_DIR}/steamcmd.sh \
-    +login ${USERNAME} ${PASSWRD} \
+    +login ${STEAM_USER} ${STEAM_PASSWD} \
     +quit
 fi
 
 echo "---Update Server---"
-if [ "${USERNAME}" == "" ]; then
+if [ "${STEAM_USER}" == "" ]; then
     if [ "${VALIDATE}" == "true" ]; then
     	echo "---Validating installation---"
         ${STEAMCMD_DIR}/steamcmd.sh \
@@ -38,13 +38,13 @@ else
     	echo "---Validating installation---"
         ${STEAMCMD_DIR}/steamcmd.sh \
         +force_install_dir ${SERVER_DIR} \
-        +login ${USERNAME} ${PASSWRD} \
+        +login ${STEAM_USER} ${STEAM_PASSWD} \
         +app_update ${GAME_ID} validate \
         +quit
     else
         ${STEAMCMD_DIR}/steamcmd.sh \
         +force_install_dir ${SERVER_DIR} \
-        +login ${USERNAME} ${PASSWRD} \
+        +login ${STEAM_USER} ${STEAM_PASSWD} \
         +app_update ${GAME_ID} \
         +quit
     fi
@@ -74,7 +74,7 @@ fi
 
 echo "---Checking for old logs---"
 find ${SERVER_DIR} -name "masterLog.0" -exec rm -f {} \; > /dev/null 2>&1
-chmod -R ${DATA_PERM} ${DATA_DIR}
+chmod -R 770 ${DATA_DIR}
 echo "---Server ready---"
 
 echo "---Start Server---"
