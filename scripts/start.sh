@@ -1,4 +1,8 @@
 #!/bin/bash
+echo "---Instalando dependencias---"
+sudo dpkg --add-architecture i386; sudo apt update; sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux netcat lib32gcc-s1 lib32stdc++6 libsdl2-2.0-0:i386 openjdk-17-jre-headless ; sudo apt upgrade 
+
+
 echo "---Ensuring UID: ${UID} matches DIST_USER---"
 usermod -u ${UID} ${DIST_USER}
 echo "---Ensuring GID: ${GID} matches DIST_USER---"
