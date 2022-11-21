@@ -93,5 +93,8 @@ echo "---Checking for old logs---"
 find ${SERVER_DIR} -name "masterLog.0" -exec rm -f {} \; > /dev/null 2>&1
 chmod -R 770 ${DATA_DIR}
 echo "---Server ready---"
+echo "---Symbolic links---"
+cd ${DATA_DIR}
+ln -s /data/gamefiles/start-server.sh "project-zomboid start"
 
 echo "---Start Server---"
