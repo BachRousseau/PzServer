@@ -24,6 +24,8 @@ if [ ! -f /data/${STEAMCMD_DIR}/steamcmd.sh ]; then
     rm /data/${STEAMCMD_DIR}/steamcmd_linux.tar.gz
 fi
 
+chmod -R 770 /data/${STEAMCMD_DIR}/
+
 echo "---Update SteamCMD---"
 if [ "${STEAM_USER}" == "" ]; then
     /data/${STEAMCMD_DIR}/steamcmd.sh \
