@@ -2,7 +2,7 @@
 echo "---Instalando dependencias---"
  dpkg --add-architecture i386; apt update;  apt install -y curl wget file tar bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux netcat lib32gcc-s1 lib32stdc++6 libsdl2-2.0-0:i386 openjdk-17-jre-headless ;  apt upgrade 
 
-adduser ${DIST_USER}
+adduser ${DIST_USER} --disabled-password
 
 echo "---Ensuring UID: ${UID} matches DIST_USER---"
 usermod -u ${UID} ${DIST_USER}
@@ -72,8 +72,8 @@ if [ ! -d ${PZ_SERVER_DIR}/Zomboid ]; then
 		echo "---Something went wrong, can't download server configuration file, putting server in sleep mode---"
 		sleep infinity
 	fi
-	unzip -o ${PZ_SERVER_DIR}/cfg.zip
-	rm ${PZ_SERVER_DIR}/cfg.zip
+	unzip -o ${PZ_SERVER_DIR}/serverconfig.zip
+	rm ${PZ_SERVER_DIR}/serverconfig.zip
 else
 	echo "---Server configuration files found!---"
 fi
