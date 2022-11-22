@@ -65,7 +65,8 @@ echo "---Setting up Environment---"
 echo "---Looking for server configuration file---"
 if [ ! -d ${PZ_SERVER_DIR}/Zomboid ]; then
 	echo "---No server configruation found, downloading template---"
-	wget -q -nc --show-progress --progress=bar:force:noscroll https://github.com/BachRousseau/PzServer/raw/e298e663c54ccbd55f1938c9ed20d0b23ffe054b/Server/serverconfig.zip 
+	wget -q -nc --show-progress --progress=bar:force:noscroll https://github.com/BachRousseau/PzServer/raw/e298e663c54ccbd55f1938c9ed20d0b23ffe054b/Server/serverconfig.zip
+    mv -fv serverconfig.zip ${PZ_SERVER_DIR}/ 
 	unzip -o ${PZ_SERVER_DIR}/serverconfig.zip
 	rm ${PZ_SERVER_DIR}/serverconfig.zip
 else
