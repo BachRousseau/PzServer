@@ -14,17 +14,18 @@ umask ${UMASK}
 
 
 echo "---Taking ownership of data...---"
-chown -R root:${GID} /data
-chmod -R 750 /data
-chown -R ${UID}:${GID} /data
+chown -R root:${GID} /data/
+chmod -R 750 /data/
+chown -R ${UID}:${GID} /data/
 
 echo "---Starting...---"
 
+su steam
 
 if [ ! -f ${STEAMCMD_DIR}/steamcmd.sh ]; then
     echo "SteamCMD not found!"
     wget -q -O ${STEAMCMD_DIR}/steamcmd_linux.tar.gz http://media.steampowered.com/client/steamcmd_linux.tar.gz 
-    tar --directory ${STEAMCMD_DIR} -xvzf /serverdata/steamcmd/steamcmd_linux.tar.gz
+    tar --directory ${STEAMCMD_DIR} -zxvf /steamcmd/steamcmd_linux.tar.gz
     rm ${STEAMCMD_DIR}/steamcmd_linux.tar.gz
 fi
 
