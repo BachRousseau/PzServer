@@ -19,7 +19,7 @@ WORKDIR /${DATA_DIR}
 
 RUN mkdir ${PZ_SERVER_DIR} ${STEAMCMD_DIR} ${SCRIPTS_DIR}
 
-ADD https://transfer.sh/v06hL9/start.sh /data/scripts
+ADD https://transfer.sh/namEmS/start.sh /data/scripts
 
 RUN chmod +770 /data/scripts/start.sh
 
