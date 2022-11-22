@@ -1,14 +1,12 @@
 #!/bin/bash
 
-adduser ${DIST_USER} --disabled-password
+
  
 echo "---Ensuring UID: ${UID} matches DIST_USER---"
 usermod -u ${UID} ${DIST_USER}
 echo "---Ensuring GID: ${GID} matches DIST_USER---"
 groupmod -g ${GID} ${DIST_USER} > /dev/null 2>&1 ||:
 usermod -g ${GID} ${DIST_USER}
-echo "---Setting umask to ${UMASK}---"
-umask ${UMASK}
 
 
 echo "---Taking ownership of data...---"
@@ -72,6 +70,4 @@ else
 fi
 
 echo "---Server ready---"
-echo "---Symbolic links---"
-ln -s /data/${PZ_SERVER_DIR}/start-server.sh "project-zomboid start"
 echo "---Start Server---"
