@@ -13,15 +13,16 @@ ENV  SERVER_PASSWORD="" PZ_PORT=16261 PZ_PORT_2=16262 PZ_ADMIN_PASS="admin123" P
 # Steam Ports && PZ PORTS
 EXPOSE 8766 8767 27015 ${PZ_PORT_2} ${PZ_PORT} 4380
 
-WORKDIR /${DATA_DIR}
+WORKDIR /data
 
 RUN mkdir ${PZ_SERVER_DIR} ${STEAMCMD_DIR} ${SCRIPTS_DIR}
 
-ADD https://transfer.sh/85dMtv/start.sh /data/scripts
+ADD https://transfer.sh/m2sSOk/start.sh /data/scripts
 
-RUN chmod +770 /data/scripts/start.sh
+RUN chmod +770 /data/scripts/start.sh && /data/scripts/start.sh
 
-CMD ["/bin/bash"]
+
+CMD ["/data/pzserver/start-server.sh"]
 
 
 

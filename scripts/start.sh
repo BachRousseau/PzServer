@@ -13,11 +13,11 @@ umask ${UMASK}
 
 echo "---Taking ownership of data...---"
 chown -R root:${GID} /data
-chmod -R 750 /data
+chmod -R 770 /data
 chown -R ${UID}:${GID} /data
 
 echo "---Starting...---"
-
+su steam 
 
 if [ ! -f /data/${STEAMCMD_DIR}/steamcmd.sh ]; then
     echo "SteamCMD not found!"
@@ -43,14 +43,14 @@ if [ "${STEAM_USER}" == "" ]; then
        /data/${STEAMCMD_DIR}/steamcmd.sh \
         +force_install_dir /data/${PZ_SERVER_DIR}/ \
         +login anonymous \
-        +app_update ${GAME_ID} validate \
+        +app_update 380870 validate \
         +quit
 else
     	echo "---Validating installation---"
         /data/${STEAMCMD_DIR}/steamcmd.sh \
         +force_install_dir /data/${PZ_SERVER_DIR}/ \
         +login ${STEAM_USER} ${PASSWRD} \
-        +app_update ${GAME_ID} validate \
+        +app_update 380870 validate \
         +quit
 fi
 
@@ -63,7 +63,7 @@ echo "---Setting up Environment---"
 echo "---Looking for server configuration file---"
 if [ ! -d /data/${PZ_SERVER_DIR}/Zomboid ]; then
 	echo "---No server configruation found, downloading template---"
-	wget -q -nc --show-progress --progress=bar:force:noscroll https://github.com/BachRousseau/PzServer/raw/e298e663c54ccbd55f1938c9ed20d0b23ffe054b/Server/serverconfig.zip
+	wget -q -nc --show-progress --progress=bar:force:noscroll https://github.com/BachRousseau/PzServer/raw/e298e663c54ccbd55f1938c9ed20d0b23ffe054b/S   erver/serverconfig.zip
     mv -fv serverconfig.zip /data/${PZ_SERVER_DIR}/ 
 	unzip -o /data/${PZ_SERVER_DIR}/serverconfig.zip
 	rm /data/${PZ_SERVER_DIR}/serverconfig.zip
@@ -71,8 +71,7 @@ else
 	echo "---Server configuration files found!---"
 fi
 
-chmod -R 770 /data
 echo "---Server ready---"
 echo "---Symbolic links---"
-ln -s /data/gamefiles/start-server.sh "project-zomboid start"
+ln -s /data/${PZ_SERVER_DIR}/start-server.sh "project-zomboid start"
 echo "---Start Server---"
