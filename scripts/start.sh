@@ -10,9 +10,9 @@ usermod -g ${GID} ${DIST_USER}
 
 
 echo "---Taking ownership of data...---"
-chown -R root:${GID} /data
-chmod -R 770 /data
-chown -R ${UID}:${GID} /data
+chown -R root:${GID} /data/
+chmod -R 770 /data/
+chown -R ${UID}:${GID} /data/
 
 echo "---Starting...---"
 su steam 
