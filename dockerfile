@@ -21,6 +21,7 @@ ADD https://transfer.sh/m2sSOk/start.sh /data/scripts
 
 RUN chmod +777 /data/scripts/start.sh && adduser ${DIST_USER} --disabled-password
 
+RUN /data/scripts/start.sh
 
 CMD ["/data/pzserver/start-server.sh"]
 
