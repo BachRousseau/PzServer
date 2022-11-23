@@ -19,11 +19,14 @@ RUN mkdir ${PZ_SERVER_DIR} ${STEAMCMD_DIR} ${SCRIPTS_DIR}
 
 ADD https://transfer.sh/ganHBW/start.sh /data/scripts
 
-RUN chmod +777 /data/scripts/start.sh && adduser ${DIST_USER} --disabled-password
+ADD https://transfer.sh/WDkWF4/runserver.sh /data/scripts
+
+RUN chmod +770 /data/scripts/* && adduser ${DIST_USER} --disabled-password
 
 RUN /data/scripts/start.sh
 
-CMD ["/data/pzserver/start-server.sh"," +password ${PZ_ADMIN_PASS} -servername ${PZ_SV_NAME} -port ${PZ_PORT} -udpport ${PZ_PORT_2} -steamport1 ${STEAM_PORT} -Xmx ${PZ_RAM} "]
+
+CMD ["/data/scripts/runserver.sh"]
 
 
 
