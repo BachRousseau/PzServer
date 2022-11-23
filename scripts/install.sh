@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "---Ensuring UID: ${UID} matches DIST_USER---"
 usermod -u ${UID} ${DIST_USER}
 echo "---Ensuring GID: ${GID} matches DIST_USER---"
