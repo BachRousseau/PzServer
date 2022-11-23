@@ -26,17 +26,6 @@ fi
 
 chmod -R 770 /data/${STEAMCMD_DIR}/
 
-echo "---Update SteamCMD---"
-if [ "${STEAM_USER}" == "" ]; then
-    /data/${STEAMCMD_DIR}/steamcmd.sh \
-    +login anonymous \
-    +quit
-else
-    /data/${STEAMCMD_DIR}/steamcmd.sh \
-    +login ${STEAM_USER} ${PASSWRD} \
-    +quit
-fi
-
 echo "---Update Server---"
 if [ "${STEAM_USER}" == "" ]; then
     	echo "---Validating installation---"

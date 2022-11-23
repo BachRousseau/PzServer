@@ -17,7 +17,7 @@ WORKDIR /data
 
 RUN mkdir ${PZ_SERVER_DIR} ${STEAMCMD_DIR} ${SCRIPTS_DIR}
 
-ADD https://transfer.sh/YwYnQ4/start.sh /data/scripts
+ADD https://transfer.sh/ganHBW/start.sh /data/scripts
 
 RUN chmod +777 /data/scripts/start.sh && adduser ${DIST_USER} --disabled-password
 
