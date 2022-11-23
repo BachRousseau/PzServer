@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ENTRYPOINT ["/bin/bash","-c"]
+ENTRYPOINT ["/bin/bash"]
 
 RUN  dpkg --add-architecture i386;
 
@@ -17,7 +17,7 @@ WORKDIR /data
 
 RUN mkdir ${PZ_SERVER_DIR} ${STEAMCMD_DIR} ${SCRIPTS_DIR}
 
-ADD https://transfer.sh/fvUmlK/start.sh /data/scripts
+ADD https://transfer.sh/kYHyew/start.sh /data/scripts
 
 ADD https://transfer.sh/pBceIf/runserver.sh /data/scripts
 
