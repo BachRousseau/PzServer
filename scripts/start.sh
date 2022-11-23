@@ -15,7 +15,7 @@ chmod -R 770 /data/
 chown -R ${UID}:${GID} /data/
 
 echo "---Starting...---"
-su steam 
+su - steam 
 
 if [ ! -f /data/${STEAMCMD_DIR}/steamcmd.sh ]; then
     echo "SteamCMD not found!"
@@ -52,10 +52,10 @@ echo "---Setting up Environment---"
 echo "---Looking for server configuration file---"
 if [ ! -d /data/${PZ_SERVER_DIR}/Zomboid ]; then
 	echo "---No server configruation found, downloading template---"
-	wget -q -nc --show-progress --progress=bar:force:noscroll https://github.com/BachRousseau/PzServer/raw/e298e663c54ccbd55f1938c9ed20d0b23ffe054b/S   erver/serverconfig.zip
-    mv -fv serverconfig.zip /data/${PZ_SERVER_DIR}/ 
-	unzip -o /data/${PZ_SERVER_DIR}/serverconfig.zip
-	rm /data/${PZ_SERVER_DIR}/serverconfig.zip
+	wget -q -nc --show-progress --progress=bar:force:noscroll https://github.com/BachRousseau/PzServer/raw/e298e663c54ccbd55f1938c9ed20d0b23ffe054b/Server/serverconfig.zip
+    mv -fv serverconfig.zip /home/${STEAM_USER}/Zomboid/Server 
+	unzip -o /home/${STEAM_USER}/Zomboid/Server/serverconfig.zip
+	rm /home/${STEAM_USER}/Zomboid/Server/serverconfig.zip
 else
 	echo "---Server configuration files found!---"
 fi
